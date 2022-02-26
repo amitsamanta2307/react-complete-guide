@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = (): JSX.Element => {
@@ -40,8 +40,20 @@ const ExpenseForm = (): JSX.Element => {
         // });
     };
 
+    const handleSubmit = (event: SyntheticEvent) => {
+        event.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate),
+        };
+
+        console.log(expenseData);
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
