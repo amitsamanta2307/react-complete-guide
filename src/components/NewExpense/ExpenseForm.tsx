@@ -3,20 +3,37 @@ import './ExpenseForm.css';
 
 const ExpenseForm = (): JSX.Element => {
 
-    const [enteredTitle, setEnteredTitle] = useState<string>('');
-    const [enteredAmount, setEnteredAmount] = useState<string>('');
-    const [enteredDate, setEnteredDate] = useState<string>('');
+    // const [enteredTitle, setEnteredTitle] = useState<string>('');
+    // const [enteredAmount, setEnteredAmount] = useState<string>('');
+    // const [enteredDate, setEnteredDate] = useState<string>('');
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        enteredAmount: '',
+        enteredDate: '',
+    });
     
     const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setEnteredTitle(event.target.value);
+        // setEnteredTitle(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredTitle: event.target.value
+        });
     };
 
     const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setEnteredAmount(event.target.value);
+        // setEnteredAmount(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredAmount: event.target.value
+        });
     };
 
     const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setEnteredDate(event.target.value);
+        // setEnteredDate(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredDate: event.target.value
+        });
     };
 
     return (
