@@ -50,6 +50,11 @@ const ExpenseForm = (): JSX.Element => {
         };
 
         console.log(expenseData);
+
+        // Clear inputs
+        setEnteredAmount('');
+        setEnteredDate('');
+        setEnteredTitle('');
     };
 
     return (
@@ -57,15 +62,34 @@ const ExpenseForm = (): JSX.Element => {
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
-                    <input type="text" placeholder="Enter title" onChange={handleTitleChange} />
+                    <input 
+                        type="text"
+                        placeholder="Enter title"
+                        value={enteredTitle}
+                        onChange={handleTitleChange}
+                    />
                 </div>
                 <div className="new-expense__control">
                     <label>Amount</label>
-                    <input type="number" min="0.01" step="0.01" placeholder="Enter amount" onChange={handleAmountChange} />
+                    <input
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Enter amount"
+                        value={enteredAmount}
+                        onChange={handleAmountChange}
+                    />
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>
-                    <input type="date" min="2019-01-01" max="2030-12-31" placeholder="Enter date" onChange={handleDateChange} />
+                    <input
+                        type="date"
+                        min="2019-01-01"
+                        max="2030-12-31"
+                        placeholder="Enter date"
+                        value={enteredDate}
+                        onChange={handleDateChange}
+                    />
                 </div>
             </div>
             <div className="new-expense__actions">
