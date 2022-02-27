@@ -3,22 +3,17 @@ import ExpenseDate from './ExpenseDate';
 
 import './ExpenseItem.css';
 
-const ExpenseItem = ({ 
-    title, 
-    amount, 
-    date 
-}: { 
+const ExpenseItem = (props: { 
     title: string,
     amount: number,
     date: Date 
 }): JSX.Element => {
-
     return (
         <Card className="expense-item">
-            <ExpenseDate date={date} />
+            <ExpenseDate date={props.date} />
             <div className="expense-item__description">
-                <h2>{title}</h2>
-                <div className="expense-item__price">₹{amount}</div>
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">₹{props.amount}</div>
             </div>
         </Card>
     );
