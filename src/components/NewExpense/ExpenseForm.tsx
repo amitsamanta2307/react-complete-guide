@@ -1,7 +1,15 @@
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = (): JSX.Element => {
+export type Expense = {
+    title: string,
+    amount: string,
+    date: Date,
+};
+
+const ExpenseForm = (props: {
+    onSaveExpenseData: (enteredExpenseData: Expense) => void,
+}): JSX.Element => {
 
     const [enteredTitle, setEnteredTitle] = useState<string>('');
     const [enteredAmount, setEnteredAmount] = useState<string>('');
@@ -49,7 +57,7 @@ const ExpenseForm = (): JSX.Element => {
             date: new Date(enteredDate),
         };
 
-        console.log(expenseData);
+        props.onSaveExpenseData(expenseData);
 
         // Clear inputs
         setEnteredAmount('');

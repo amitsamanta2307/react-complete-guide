@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Expenses from './components/Expenses/Expenses';
+import { Expense } from './components/NewExpense/ExpenseForm';
 import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
@@ -27,9 +28,14 @@ function App() {
     },
   ];
 
+  const handleAddExpense = (expense: Expense) => {
+    console.log("In App.js");
+    console.log(expense);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onAddExpense={handleAddExpense} />
       <Expenses items={expenses} />
     </div>
   );
