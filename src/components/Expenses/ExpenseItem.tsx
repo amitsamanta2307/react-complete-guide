@@ -5,7 +5,7 @@ import './ExpenseItem.css';
 
 const ExpenseItem = (props: { 
     title: string,
-    amount: number,
+    amount: string,
     date: Date 
 }): JSX.Element => {
     return (
