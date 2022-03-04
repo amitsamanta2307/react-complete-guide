@@ -7,8 +7,9 @@ import './Expenses.css';
 
 const Expenses = (props: {
     items: Array<{
+        id: string,
         title: string,
-        amount: string,
+        amount: number,
         date: Date
     }>
 }): JSX.Element => {
@@ -24,6 +25,7 @@ const Expenses = (props: {
                 <ExpensesFilter selected={filterYear} onFilterChange={handleFilterChange} />
                 {props.items.map(expense => (
                     <ExpenseItem
+                        key={expense.id}
                         title={expense.title}
                         amount={expense.amount}
                         date={expense.date}

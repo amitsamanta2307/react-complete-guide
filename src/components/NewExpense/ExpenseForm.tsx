@@ -1,9 +1,12 @@
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import './ExpenseForm.css';
 
 export type Expense = {
+    id: string,
     title: string,
-    amount: string,
+    amount: number,
     date: Date,
 };
 
@@ -31,8 +34,9 @@ const ExpenseForm = (props: {
         event.preventDefault();
 
         const expenseData = {
+            id: uuidv4(),
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: parseFloat(enteredAmount),
             date: new Date(enteredDate),
         };
 

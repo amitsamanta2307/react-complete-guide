@@ -3,9 +3,9 @@ import ExpenseDate from './ExpenseDate';
 
 import './ExpenseItem.css';
 
-const ExpenseItem = (props: { 
+const ExpenseItem = (props: {
     title: string,
-    amount: string,
+    amount: number,
     date: Date 
 }): JSX.Element => {
     return (
