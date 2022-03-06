@@ -6,6 +6,7 @@ const ExpensesFilter = (props: {
     selected: string,
     onFilterChange: (selectYear: string) => void
 }): JSX.Element => {
+    
     const handleFilterChange = (event: ChangeEvent<HTMLSelectElement>) => {
         props.onFilterChange(event.target.value);
     };
