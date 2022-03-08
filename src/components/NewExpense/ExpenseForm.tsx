@@ -1,59 +1,43 @@
 import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import './ExpenseForm.css';
 
 export type Expense = {
+    id: string,
     title: string,
-    amount: string,
+    amount: number,
     date: Date,
 };
 
 const ExpenseForm = (props: {
     onSaveExpenseData: (enteredExpenseData: Expense) => void,
+    onStopEditing: () => void
 }): JSX.Element => {
 
     const [enteredTitle, setEnteredTitle] = useState<string>('');
     const [enteredAmount, setEnteredAmount] = useState<string>('');
     const [enteredDate, setEnteredDate] = useState<string>('');
-    // const [userInput, setUserInput] = useState({
-    //     enteredTitle: '',
-    //     enteredAmount: '',
-    //     enteredDate: '',
-    // });
     
     const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEnteredTitle(event.target.value);
-        // setUserInput({
-        //     ...userInput,
-        //     enteredTitle: event.target.value
-        // });
-        // setUserInput((prevState) => ({
-        //     ...prevState,
-        //     enteredTitle: event.target.value
-        // }));
     };
 
     const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEnteredAmount(event.target.value);
-        // setUserInput({
-        //     ...userInput,
-        //     enteredAmount: event.target.value
-        // });
     };
 
     const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEnteredDate(event.target.value);
-        // setUserInput({
-        //     ...userInput,
-        //     enteredDate: event.target.value
-        // });
     };
 
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
 
         const expenseData = {
+            id: uuidv4(),
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: parseFloat(enteredAmount),
             date: new Date(enteredDate),
         };
 
@@ -101,6 +85,7 @@ const ExpenseForm = (props: {
                 </div>
             </div>
             <div className="new-expense__actions">
+                <button type="reset" onClick={props.onStopEditing}>Cancel</button>
                 <button type="submit">Add Expense</button>
             </div>
         </form>
